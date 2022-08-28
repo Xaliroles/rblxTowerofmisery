@@ -1,0 +1,156 @@
+local Material = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/MaterialLua/master/Module.lua"))()
+
+local X = Material.Load({
+	Title = "LyxHyb Tower Of Hell",
+	Style = 2,
+	SizeX = 250,
+	SizeY = 300,
+	Theme = "Dark",
+	ColorOverrides = {
+		MainFrame = Color3.fromRGB(64,64,30)
+	}
+})
+
+
+local Y = X.New({
+	Title = "AutoFarms"
+})
+
+-- z.X
+
+local A = Y.Button({
+	Text = "End Tower",
+	Callback = function()
+		    local endzone = game.Workspace.tower.sections.finish.FinishGlow.CFrame
+ 
+    local player = game.Players.LocalPlayer.Character
+    player.HumanoidRootPart.CFrame = endzone
+	end,
+	Menu = {
+		Information = function(self)
+			X.Banner({
+				Text = "Teleports to End!"
+			})
+		end
+	}
+})
+
+local A = Y.Button({
+	Text = "Remove Kill Parts",
+	Callback = function()
+		    for i,v in pairs(game:GetService("Workspace").tower:GetDescendants()) do
+        if v:IsA("BoolValue") and v.Name == "kills" then
+            v.Parent:Destroy()
+        end
+    end
+	end,
+	Menu = {
+		Information = function(self)
+			X.Banner({
+				Text = "Removing all kill parts for noobs."
+			})
+		end
+	}
+})
+
+local A = Y.Button({
+	Text = "Anti-Cheat",
+	Callback = function()
+		    local reg = getreg()
+ 
+    for i, Function in next, reg do
+        if type(Function) == 'function' then
+            local info = getinfo(Function)
+ 
+            if info.name == 'kick' then
+                if (hookfunction(info.func, function(...)end)) then
+                    print'Already Opened Anti-Cheat'
+                else
+                    print'Failed Stop Anti-cheat'
+                end
+            end
+        end
+    end
+	end,
+	Menu = {
+		Information = function(self)
+			X.Banner({
+				Text = "Activate's anti cheat."
+			})
+		end
+	}
+})
+
+local A = Y.Button({
+	Text = "Give All Items",
+	Callback = function()
+		    for _,e in pairs(game.Players.LocalPlayer.Backpack:GetDescendants()) do
+        if e:IsA("Tool") then
+        e:Destroy()
+        end
+        end
+        wait() 
+        for _,v in pairs(game.ReplicatedStorage.Gear:GetDescendants()) do
+        if v:IsA("Tool") then
+        local CloneThings = v:Clone()
+        wait()
+        CloneThings.Parent = game.Players.LocalPlayer.Backpack
+ 
+        end
+        end
+		print("Done Gived all items, to player!")
+	end,
+	Menu = {
+		Information = function(self)
+			X.Banner({
+				Text = "Gives all items to, you and everything."
+			})
+		end
+	}
+})
+
+local A = Y.Button({
+	Text = "Anti-Lag",
+	Callback = function()
+		loadstring(game:HttpGet('https://pastebin.com/raw/eVHmQQvQ'))()
+	end,
+	Menu = {
+		Information = function(self)
+			X.Banner({
+				Text = "It makes your game gross but it makes your FPS higher."
+			})
+		end
+	}
+})
+
+local Z = X.New({
+	Title = "Lobby"
+})
+
+local A = Y.Button({
+	Text = "Set Speed 32",
+	Callback = function()
+		 game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 32
+	end,
+	Menu = {
+		Information = function(self)
+			X.Banner({
+				Text = "This function can get you banned in up-to-date servers; use at your own risk."
+			})
+		end
+	}
+})
+
+local A = Y.Button({
+	Text = "Set Jump 420",
+	Callback = function()
+		 game.Players.LocalPlayer.Character.Humanoid.JumpPower = 420
+	end,
+	Menu = {
+		Information = function(self)
+			X.Banner({
+				Text = "This function can get you banned in up-to-date servers; use at your own risk."
+			})
+		end
+	}
+})
